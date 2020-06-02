@@ -20,8 +20,8 @@ if (mongoose.connection.readyState === 0) {
 const server = express()
 const routes = require("./server/routes")
 
-server.use("/", routes)
 server.use(bodyParser.json())
+server.use("/", routes)
 
 const serverObj = server.listen(PORT, () => { console.log("Server listening in PORT ", PORT) })
 
