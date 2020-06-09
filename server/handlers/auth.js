@@ -2,6 +2,7 @@ const AuthFactory = () => {
 
     const Auth = require("../models/Auth")
     const errorHandler = require("../utils/errorHandler")
+    const jwtUtils = require("../utils/jwt")()
 
     /**
      * logins a user
@@ -20,12 +21,16 @@ const AuthFactory = () => {
             // compare passwords
             if (password !== rp.password) return res.status(400).json({ error: "bad request", message: "password does not match" })
 
-            return res.status(200).json({ success: true })
+            //create token
+            const jwt = jwtUtils.sign({ userId })
+
+            return res.status(200).json({ success: true, token: jwt })
 
         } catch (e) {
             return errorHandler(res)
         }
     }
+
 
     return {
         login

@@ -1,4 +1,5 @@
 const Auth = require("../server/models/Auth")
+const jwtUtils = require("../server/utils/jwt")
 
 const createAuth = async (newAuthObj) => {
     const authObj = {
@@ -13,7 +14,12 @@ const deleteAll = async () => {
     return await Auth.deleteMany({})
 }
 
+const createFakeToken = (payload) => {
+    return jwtUtils(payload)
+}
+
 module.exports = {
     createAuth,
-    deleteAll
+    deleteAll,
+    createFakeToken
 }

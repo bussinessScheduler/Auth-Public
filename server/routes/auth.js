@@ -1,11 +1,10 @@
 const router = require("express").Router()
 const AuthFactory = require("../handlers/auth")()
 
-// const validationManager = require("./middleware/validation")
+const loginValidator = require("./validation/login.js")
+const validationManager = require("./middleware/validationManager")
 
-// const createTopupValidator = require("./validators/create.topup")
-
-router.post("/login", AuthFactory.login)
+router.post("/login", loginValidator, validationManager, AuthFactory.login)
 
 
 
