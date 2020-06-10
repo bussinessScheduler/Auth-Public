@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "mocha --exit --timeout 10000",
-    "start": "node server.js"
+    "start": "node server.js",
+    "remote-deploy": "bash deploy.sh auth_service"
   },
   "repository": {
     "type": "git",
